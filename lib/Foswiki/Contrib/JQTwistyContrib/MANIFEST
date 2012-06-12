@@ -1,0 +1,8 @@
+data/System/JQTwistyContrib.txt 0644
+lib/Foswiki/Contrib/JQTwistyContrib/Config.spec 0644
+lib/Foswiki/Contrib/JQTwistyContrib/Core.pm 0644
+lib/Foswiki/Contrib/JQTwistyContrib.pm 0644
+pub/System/JQTwistyContrib/Makefile 0644
+pub/System/JQTwistyContrib/jquery.twisty.js 0644
+pub/System/JQTwistyContrib/jquery.twisty.js.gz 0644
+pub/System/JQTwistyContrib/jquery.twisty.uncompressed.js 0644

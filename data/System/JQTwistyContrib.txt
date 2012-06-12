@@ -1,0 +1,173 @@
+%META:TOPICINFO{author="micha" comment="reprev" date="1339519248" format="1.1" reprev="3" version="3"}%
+---+!! %TOPIC%
+%SHORTDESCRIPTION%
+
+%TOC%
+
+%TOPIC% is a lightweight twisty plugin implementing a subset of the features provided by %SYSTEMWEB%.TwistyPlugin,
+but using javascript only. This comes in handy when a twisty is needed but without having to render it
+using the Foswiki backend server. 
+
+A "twisty" is a collabsable area to hide/show certain areas of a webpage.
+
+---++ Usage
+
+A twisty consists of two elements: a trigger and a container. When the trigger is clicked by the user, the container will be collapsed or expanded. The behavior of the twisty is configured using html5 data attributes part of the trigger element.
+Use the =jqTwisty= css class to install the twisty on a trigger element. The toggle container is then specified using a =target= argument, defaulting to the next adjacent html node in the tree,
+
+<verbatim class="tml">
+<a class='jqTwisty'>click me</a>
+<div>
+Here comes the container.
+</div>
+</verbatim>
+
+---++ Parameter
+
+| *Name* | *Description* | *Default* |
+| openText | text of the trigger button when the container is hidden | html text of the trigger element |
+| closeText | text to be displayed when the container is shown | same as openText |
+| openImg | url of an image displayed when the container is hidden |  |
+| closeImg | url of an image displayed when the container is shown | |
+| initialState| initial state of the container: can be 'open' or 'close' | close |
+| target | jquer selector of container(s) to toggle their visibility | next html node following the twisty trigger |
+
+---++ Events
+
+---+++ State change events
+%TOPIC% will fire an event according to the state changes of the twisty. That way you'll be able to bind additional behaviors on its base, for instance when the twisty is fully open.
+
+| *Event* | *Description* |
+| inited.twisty | the twisty has been initialized |
+| beforeOpen.twisty | the twisty is about to be opened | 
+| afterOpen.twisty | the twisty has been opened |
+| beforeClosed.twisty | the twisty is about to be closed |
+| afterClose.twisty | the twisty has been closed |
+
+---+++ Access events
+You might also fire an event on the twisty itself to change the state from within javascript. See the accordion example below coordinating multiple twisties.
+
+| *Event* | *Description* |
+| open.twisty | opens the twist |
+| close.twisty | closes the twist |
+
+---++ Examples
+%JQREQUIRE{"jqtwisty"}%
+
+---+++ Simple 
+<a class='jqTwisty' data-open-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle-collapse.png' data-close-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle.png' data-close-text="%MAKETEXT{"close"}%">%MAKETEXT{"open"}%</a>
+<div>
+Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
+
+Has ei inermis ponderum, senserit recteque quo ne. Reque sadipscing te vim, eu possit labores platonem eam, pri debet accusam copiosae ea. Alii graeci verear in pri. Vel cu graeco nonumes maiorum, legere comprehensam has ad. Graece petentium vix ne, aliquip recusabo te pri.
+
+Vim ad dicunt mentitum tacimates, his at illud suavitate. Ubique dictas deserunt mea ut. Idque labore inciderint in his, ad saepe eruditi erroribus his. Phaedrum argumentum ex vis. In iusto exerci scaevola mel, ex expetendis scripserit sit.
+
+Omnis copiosae vix ad, per oratio suscipiantur ad. Est ne congue verear comprehensam. Nec mucius dicunt dignissim te, cu qui laoreet fastidii, iriure propriae appellantur cum eu. Ea vis dicat novum, feugiat tractatos interesset in ius, vel wisi offendit te. Possit feugiat similique per at, viris verear an quo.
+
+Iusto suscipiantur at pri. Qui aliquid delenit ad, ex eos porro cotidieque. Wisi velit sea ex, nec sale molestiae an. Duo minim inermis recusabo cu, vel utinam oporteat ad, amet brute usu ut. Scribentur philosophia in mea. In iuvaret fierent sadipscing ius, in possit alienum pro.
+</div>
+
+---+++ Multiple containers
+<div class="myTwisty" style="width:200px;border:1px solid red;padding:1em;">
+Omnis copiosae vix ad, per oratio suscipiantur ad. Est ne congue verear comprehensam. Nec mucius dicunt dignissim te, cu qui laoreet fastidii, iriure propriae appellantur cum eu. Ea vis dicat novum, feugiat tractatos interesset in ius, vel wisi offendit te. Possit feugiat similique per at, viris verear an quo.
+</div>
+
+<a class='jqTwisty' data-open-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle-collapse.png' data-close-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle.png' data-close-text="%MAKETEXT{"close"}%" data-target='.myTwisty'>%MAKETEXT{"open"}%</a>
+
+<div class="myTwisty" style="width:200px;border:1px solid red;padding:1em;">
+Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
+</div>
+
+%CLEAR%
+
+---+++ State changes
+<a id='twistyDemo1' class='jqTwisty' data-open-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle-collapse.png' data-close-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle.png' data-close-text="%MAKETEXT{"close"}%">%MAKETEXT{"open"}%</a>
+<div>
+Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
+
+Has ei inermis ponderum, senserit recteque quo ne. Reque sadipscing te vim, eu possit labores platonem eam, pri debet accusam copiosae ea. Alii graeci verear in pri. Vel cu graeco nonumes maiorum, legere comprehensam has ad. Graece petentium vix ne, aliquip recusabo te pri.
+
+Vim ad dicunt mentitum tacimates, his at illud suavitate. Ubique dictas deserunt mea ut. Idque labore inciderint in his, ad saepe eruditi erroribus his. Phaedrum argumentum ex vis. In iusto exerci scaevola mel, ex expetendis scripserit sit.
+
+Omnis copiosae vix ad, per oratio suscipiantur ad. Est ne congue verear comprehensam. Nec mucius dicunt dignissim te, cu qui laoreet fastidii, iriure propriae appellantur cum eu. Ea vis dicat novum, feugiat tractatos interesset in ius, vel wisi offendit te. Possit feugiat similique per at, viris verear an quo.
+
+Iusto suscipiantur at pri. Qui aliquid delenit ad, ex eos porro cotidieque. Wisi velit sea ex, nec sale molestiae an. Duo minim inermis recusabo cu, vel utinam oporteat ad, amet brute usu ut. Scribentur philosophia in mea. In iuvaret fierent sadipscing ius, in possit alienum pro.
+</div>
+
+<literal>
+<script>
+jQuery(function($) {
+  $("#twistyDemo1").bind("afterOpen.twisty", function() { 
+    alert("twisty is open");
+  });
+  $("#twistyDemo1").bind("afterClose.twisty", function() { 
+    alert("twisty is closed");
+  });
+});
+</script>
+</literal>
+
+---+++ Accordion
+
+<div class='accordeon'>
+<h3 class='jqTwisty'>Section 1</h3>
+<div>
+Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
+</div>
+<h3 class='jqTwisty'>Section 2</h3>
+<div>
+Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
+</div>
+<h3 class='jqTwisty'>Section 3</h3>
+<div>
+Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
+</div>
+</div>
+
+<literal>
+<style>
+.accordeon {
+  width:400px;
+}
+.accordeon h3 {
+  margin:0;
+  padding:0.5em;
+  border-bottom:1px solid #ddd;
+}
+.accordeon .jqTwistyHover {
+  color:#C60206;
+}
+.accordeon .jqTwistyContainer {
+  padding:0.5em;
+}
+</style>
+<script>
+jQuery(function($) {
+  $(".accordeon .jqTwisty").bind("beforeOpen.twisty", function() {
+    $(".accordeon .jqTwisty").not(this).trigger("close.twisty");
+  });
+});
+</script>
+</literal>
+
+---++ Installation Instructions
+
+%$INSTALL_INSTRUCTIONS%
+
+---++ Info
+<!--
+   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
+-->
+
+|  Author(s): | Michael Daum|
+|  Copyright: | &copy; 2012 Michael Daum http://michaeldaumconsulting.com |
+|  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
+|  Release: | %$RELEASE% |
+|  Version: | %$VERSION% |
+|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  12 Jun 2012: | initial release |
+|  Dependencies: | %$DEPENDENCIES% |
+|  Home page: | Foswiki:Extensions/%TOPIC% |
+|  Support: | Foswiki:Support/%TOPIC% |
+
