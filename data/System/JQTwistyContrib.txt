@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1339519248" format="1.1" reprev="3" version="3"}%
+%META:TOPICINFO{author="micha" comment="reprev" date="1381417193" format="1.1" reprev="3" version="4"}%
 ---+!! %TOPIC%
 %SHORTDESCRIPTION%
 
@@ -69,11 +69,12 @@ Iusto suscipiantur at pri. Qui aliquid delenit ad, ex eos porro cotidieque. Wisi
 </div>
 
 ---+++ Multiple containers
+
+<a class='jqTwisty' data-open-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle-collapse.png' data-close-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle.png' data-close-text="%MAKETEXT{"close"}%" data-target='.myTwisty'>%MAKETEXT{"open"}%</a>
+
 <div class="myTwisty" style="width:200px;border:1px solid red;padding:1em;">
 Omnis copiosae vix ad, per oratio suscipiantur ad. Est ne congue verear comprehensam. Nec mucius dicunt dignissim te, cu qui laoreet fastidii, iriure propriae appellantur cum eu. Ea vis dicat novum, feugiat tractatos interesset in ius, vel wisi offendit te. Possit feugiat similique per at, viris verear an quo.
 </div>
-
-<a class='jqTwisty' data-open-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle-collapse.png' data-close-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle.png' data-close-text="%MAKETEXT{"close"}%" data-target='.myTwisty'>%MAKETEXT{"open"}%</a>
 
 <div class="myTwisty" style="width:200px;border:1px solid red;padding:1em;">
 Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
@@ -161,11 +162,12 @@ jQuery(function($) {
 -->
 
 |  Author(s): | Michael Daum|
-|  Copyright: | &copy; 2012 Michael Daum http://michaeldaumconsulting.com |
+|  Copyright: | &copy; 2012-2013 Michael Daum http://michaeldaumconsulting.com |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  13 Dec 2013: | support html elements to be used as twisty toggles |
 |  12 Jun 2012: | initial release |
 |  Dependencies: | %$DEPENDENCIES% |
 |  Home page: | Foswiki:Extensions/%TOPIC% |

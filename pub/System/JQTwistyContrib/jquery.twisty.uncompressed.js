@@ -1,9 +1,9 @@
 /**
  * @preserve
- * jquery.twisty v1.0.0
+ * jquery.twisty 1.1.0
  * http://foswiki.org/Extensions/JQTwistyContrib
  *
- * Copyright (c) 2012 Michael Daum
+ * Copyright (c) 2012-2013 Michael Daum http://michaeldaumconsulting.com
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
@@ -28,7 +28,9 @@
     self._defaults = defaults;
     self.options = $.extend( {}, defaults, self.element.data(), options) ; 
 
-    self.options.openText = self.options.openText || self.element.text();
+    if (element.childNodes[0].nodeType == 3) { // a flat text node
+      self.options.openText = self.options.openText || self.element.text();
+    }
     self.options.closeText = self.options.closeText || self.options.openText;
     self.options.closeImg = self.options.closeImg || self.options.openImg;
 
@@ -93,7 +95,9 @@
     if (self.options.closeText) {
       html += self.options.closeText;
     }
-    self.element.html(html);
+    if (html) {
+      self.element.html(html);
+    }
 
     if (immediate) {
       self.target.show();
@@ -112,7 +116,9 @@
     if (self.options.openText) {
       html += self.options.openText;
     }
-    self.element.html(html);
+    if (html) {
+      self.element.html(html);
+    }
 
     if (immediate) {
       self.target.hide();
