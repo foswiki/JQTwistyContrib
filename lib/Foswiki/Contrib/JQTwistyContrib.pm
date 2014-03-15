@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# JQTwistyContrib is Copyright (C) 2012-2013 Michael Daum http://michaeldaumconsulting.com
+# JQTwistyContrib is Copyright (C) 2012-2014 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -24,8 +24,8 @@ use warnings;
 
 =cut
 
-our $VERSION = '2.10';
-our $RELEASE = '2.10';
+our $VERSION = '2.11';
+our $RELEASE = '2.11';
 our $SHORTDESCRIPTION = 'Lightweight twisty plugin';
 our $NO_PREFS_IN_TOPIC = 1;
 
@@ -38,7 +38,7 @@ call this to init the plugin from perl
 =cut
 
 sub init {
-  require Foswiki::Plugins::JQueryPlugin ();
+  require Foswiki::Plugins::JQueryPlugin;
   Foswiki::Plugins::JQueryPlugin::registerPlugin("JQTwisty", "Foswiki::Contrib::JQTwistyContrib::Core");
 }
 
