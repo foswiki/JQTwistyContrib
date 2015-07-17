@@ -1,9 +1,9 @@
 /**
  * @preserve
- * jquery.twisty 1.1.0
+ * jquery.twisty 1.20
  * http://foswiki.org/Extensions/JQTwistyContrib
  *
- * Copyright (c) 2012-2014 Michael Daum http://michaeldaumconsulting.com
+ * Copyright (c) 2012-2015 Michael Daum http://michaeldaumconsulting.com
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
@@ -101,6 +101,7 @@
 
     if (immediate) {
       self.target.show();
+      self.element.removeClass("jqTwistyClosed");
     } else {
       self.openAnimation();
     }
@@ -122,6 +123,7 @@
 
     if (immediate) {
       self.target.hide();
+      self.element.addClass("jqTwistyClosed");
     } else {
       self.closeAnimation();
     }
@@ -139,6 +141,7 @@
     'fast', 
     self.options.easing,
     function() {
+      self.element.removeClass("jqTwistyClosed");
       self.element.trigger("afterOpen.twisty");
     });
   };
@@ -155,6 +158,7 @@
     'fast', 
     self.options.easing,
     function() {
+      self.element.addClass("jqTwistyClosed");
       self.element.trigger("afterClose.twisty");
     });
   };
