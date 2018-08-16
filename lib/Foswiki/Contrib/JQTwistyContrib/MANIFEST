@@ -1,3 +1,4 @@
+!noci
 data/System/JQTwistyContrib.txt 0644
 lib/Foswiki/Contrib/JQTwistyContrib/Config.spec 0644
 lib/Foswiki/Contrib/JQTwistyContrib/Core.pm 0644

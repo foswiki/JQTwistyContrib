@@ -1,9 +1,9 @@
 /**
  * @preserve
- * jquery.twisty 1.20
+ * jquery.twisty 1.21
  * http://foswiki.org/Extensions/JQTwistyContrib
  *
- * Copyright (c) 2012-2015 Michael Daum http://michaeldaumconsulting.com
+ * Copyright (c) 2012-2018 Michael Daum http://michaeldaumconsulting.com
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *

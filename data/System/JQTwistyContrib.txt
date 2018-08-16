@@ -1,6 +1,6 @@
 %META:TOPICINFO{author="ProjectContributor" comment="" date="1437153146" format="1.1"  version="1"}%
 ---+!! %TOPIC%
-%SHORTDESCRIPTION%
+%FORMFIELD{"Description"}%
 
 %TOC%
 
@@ -153,25 +153,26 @@ jQuery(function($) {
 </literal>
 
 ---++ Installation Instructions
-
 %$INSTALL_INSTRUCTIONS%
 
----++ Info
-<!--
-   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
--->
+---++ Dependencies
+%$DEPENDENCIES%
 
-|  Author(s): | Michael Daum|
-|  Copyright: | &copy; 2012-2015 Michael Daum http://michaeldaumconsulting.com |
-|  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
-|  Release: | %$RELEASE% |
-|  Version: | %$VERSION% |
-|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+---++ Change History
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+|  16 Aug 2018: | maintenance and docu
 |  17 Jul 2015: | added css classes to indicate twisty state |
 |  15 Mar 2014: | fixed syntax error in contrib stub |
 |  13 Dec 2013: | support html elements to be used as twisty toggles |
 |  12 Jun 2012: | initial release |
-|  Dependencies: | %$DEPENDENCIES% |
-|  Home page: | Foswiki:Extensions/%TOPIC% |
-|  Support: | Foswiki:Support/%TOPIC% |
 
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2012-2018 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
+%META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
+%META:FIELD{name="Release" title="Release" value="%$RELEASE%"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%TOPIC%"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%TOPIC%"}%
+%META:FIELD{name="Version" title="Version" value="%$VERSION%"}%

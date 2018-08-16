@@ -31,7 +31,7 @@ sub new {
     $class->SUPER::new(
       $session,
       name => 'JQTwisty',
-      version => '1.20',
+      version => '1.21',
       author => 'Michael Daum',
       homepage => 'http://foswiki.org/Extensions/JQTwistyContrib',
       css => ['jquery.twisty.css'],
@@ -49,7 +49,7 @@ sub new {
 __END__
 Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Copyright (C) 2012-2015 Michael Daum http://michaeldaumconsulting.com
+Copyright (C) 2012-2018 Michael Daum http://michaeldaumconsulting.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
