@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# JQTwistyContrib is Copyright (C) 2012-2018 Michael Daum http://michaeldaumconsulting.com
+# JQTwistyContrib is Copyright (C) 2012-2020 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,8 +18,8 @@ package Foswiki::Contrib::JQTwistyContrib;
 use strict;
 use warnings;
 
-our $VERSION = '2.21';
-our $RELEASE = '16 Aug 2018';
+our $VERSION = '3.00';
+our $RELEASE = '26 Oct 2020';
 our $SHORTDESCRIPTION = 'Lightweight twisty plugin';
 our $NO_PREFS_IN_TOPIC = 1;
 

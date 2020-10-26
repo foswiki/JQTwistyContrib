@@ -4,6 +4,7 @@ package Foswiki::Contrib::JQTwistyContrib::Core;
 use strict;
 use warnings;
 
+use Foswiki::Contrib::JQTwistyContrib ();
 use Foswiki::Plugins::JQueryPlugin::Plugin ();
 our @ISA = qw( Foswiki::Plugins::JQueryPlugin::Plugin );
 
@@ -31,7 +32,7 @@ sub new {
     $class->SUPER::new(
       $session,
       name => 'JQTwisty',
-      version => '1.21',
+      version => $Foswiki::Contrib::JQTwistyContrib::VERSION,
       author => 'Michael Daum',
       homepage => 'http://foswiki.org/Extensions/JQTwistyContrib',
       css => ['jquery.twisty.css'],
@@ -49,7 +50,7 @@ sub new {
 __END__
 Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Copyright (C) 2012-2018 Michael Daum http://michaeldaumconsulting.com
+Copyright (C) 2012-2020 Michael Daum http://michaeldaumconsulting.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

@@ -1,51 +1,59 @@
 /**
  * @preserve
- * jquery.twisty 1.21
+ * jquery.twisty 3.00
  * http://foswiki.org/Extensions/JQTwistyContrib
  *
- * Copyright (c) 2012-2018 Michael Daum http://michaeldaumconsulting.com
- * Dual licensed under the MIT and GPL licenses, located in
- * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
- *
+ * Copyright (c) 2012-2020 Michael Daum http://michaeldaumconsulting.com
+ * Licensed under the GPL licenses, locat
  */
+"use strict";
 (function($) {
 
-  var pluginName = 'jqTwisty',
+  var globalTwistyCounter = 0,
       defaults = {
         openText: null,
         closeText: null,
         openImg : null,
         closeImg : null,
-        initialState: 'close',
+        remember: false,
+        initialState: null,
+        easing: 'swing',
         target: null
       };
 
-  function Plugin(element, options) {
+  function Twisty(element, opts) {
     var self = this;
 
     self.element = $(element);
-    self._name = pluginName;
-    self._defaults = defaults;
-    self.options = $.extend( {}, defaults, self.element.data(), options) ; 
+    self.state = 'close';
+    self.opts = $.extend( {}, defaults, self.element.data(), opts) ; 
 
     if (element.childNodes[0].nodeType == 3) { // a flat text node
-      self.options.openText = self.options.openText || self.element.text();
+      self.opts.openText = self.opts.openText || self.element.text();
     }
-    self.options.closeText = self.options.closeText || self.options.openText;
-    self.options.closeImg = self.options.closeImg || self.options.openImg;
+    self.opts.closeText = self.opts.closeText || self.opts.openText;
+    self.opts.closeImg = self.opts.closeImg || self.opts.openImg;
 
     self.init();
   }
 
-  Plugin.prototype.init = function() {
-    var self = this;
+  Twisty.prototype.init = function() {
+    var self = this, 
+        state = self.opts.initialState,
+        key = self.getStorageKey();
 
-    self.target = self.options.target?$(self.options.target):self.element.next();
+    self.target = self.opts.target?$(self.opts.target):self.element.next();
     self.target.addClass("jqTwistyContainer");
-    
-    self.setState(self.options.initialState, true);
+    self.getId();
 
-    self.element.click(function() {
+    if (self.opts.remember) {
+      state = self.fetchState();
+    }
+
+    state = state || 'close';
+    self.setState(state, true);
+
+    self.element.on("click", function() {
       if (self.state === 'open') {
         self.setState('close');
       } else {
@@ -54,28 +62,65 @@
       return false;
     });
 
-    self.element.hover(function() {
-        self.element.addClass("jqTwistyHover");
-      }, function() {
-        self.element.removeClass("jqTwistyHover");
+    self.element.on("mouseenter", function() {
+      self.element.addClass("jqTwistyHover");
+    }).on("mouseleave", function() {
+      self.element.removeClass("jqTwistyHover");
     });
 
-    self.element.bind("close.twisty", function() {
+    self.element.on("close.twisty", function() {
       self.close();
     });
 
-    self.element.bind("open.twisty", function() {
+    self.element.on("open.twisty", function() {
       self.open();
     });
 
     self.element.trigger("inited.twisty");
   };
 
-  Plugin.prototype.setState = function(state, immediate) {
+  Twisty.prototype.fetchState = function() {
     var self = this;
 
-    if (state === 'open') self.state = state;
-    if (state === 'close') self.state = state;
+    return sessionStorage.getItem(self.getStorageKey());
+  };
+
+  Twisty.prototype.storeState = function() {
+    var self = this;
+
+    sessionStorage.setItem(self.getStorageKey(), self.state);
+  };
+
+  Twisty.prototype.getStorageKey = function() {
+    var self = this;
+
+    if (!self.storageKey) {
+      self.storageKey = foswiki.getPreference("WEB") + "/" + foswiki.getPreference("TOPIC") + "_" + self.getId();
+    }
+ 
+    return self.storageKey;
+  };
+
+  Twisty.prototype.getId = function() {
+    var self = this, 
+      id = self.id || self.element.attr("id");
+
+    if (!id) {
+      id = self.id = 'jqTwisty'+globalTwistyCounter++;
+      self.element.attr("id", id);
+    }
+
+    return id;
+  };
+
+  Twisty.prototype.setState = function(state, immediate) {
+    var self = this;
+
+    self.state = state;
+
+    if (self.opts.remember) {
+      self.storeState();
+    }
 
     if (self.state === 'open') {
       self.open(immediate);
@@ -84,16 +129,16 @@
     }
   };
 
-  Plugin.prototype.open = function(immediate) {
+  Twisty.prototype.open = function(immediate) {
     var self = this, html = '';
 
     self.state = 'open';
 
-    if (self.options.openImg) {
-      html = '<img src="'+self.options.openImg+'" /> ';
+    if (self.opts.openImg) {
+      html = '<img src="'+self.opts.openImg+'" /> ';
     }
-    if (self.options.closeText) {
-      html += self.options.closeText;
+    if (self.opts.closeText) {
+      html += self.opts.closeText;
     }
     if (html) {
       self.element.html(html);
@@ -107,15 +152,15 @@
     }
   };
 
-  Plugin.prototype.close = function(immediate) {
+  Twisty.prototype.close = function(immediate) {
     var self = this, html = '';
 
     self.state = 'close';
-    if (self.options.closeImg) {
-      html = '<img src="'+self.options.closeImg+'" /> ';
+    if (self.opts.closeImg) {
+      html = '<img src="'+self.opts.closeImg+'" /> ';
     }
-    if (self.options.openText) {
-      html += self.options.openText;
+    if (self.opts.openText) {
+      html += self.opts.openText;
     }
     if (html) {
       self.element.html(html);
@@ -129,7 +174,7 @@
     }
   };
 
-  Plugin.prototype.openAnimation = function() {
+  Twisty.prototype.openAnimation = function() {
     var self = this;
 
     self.element.trigger("beforeOpen.twisty");
@@ -139,14 +184,14 @@
       opacity:'show'
     }, 
     'fast', 
-    self.options.easing,
+    self.opts.easing,
     function() {
       self.element.removeClass("jqTwistyClosed");
       self.element.trigger("afterOpen.twisty");
     });
   };
 
-  Plugin.prototype.closeAnimation = function() {
+  Twisty.prototype.closeAnimation = function() {
     var self = this;
 
     self.element.trigger("beforeClose.twisty");
@@ -156,19 +201,17 @@
       opacity:'hide'
     }, 
     'fast', 
-    self.options.easing,
+    self.opts.easing,
     function() {
       self.element.addClass("jqTwistyClosed");
       self.element.trigger("afterClose.twisty");
     });
   };
 
-  Plugin.prototype.state = 'close';
-
-  $.fn[pluginName] = function(options) { 
+  $.fn.jqTwisty = function(opts) { 
     return this.each(function () { 
-      if (!$.data(this, 'plugin_' + pluginName)) { 
-        $.data(this, 'plugin_' + pluginName, new Plugin(this, options)); 
+      if (!$.data(this, 'jqTwisty')) { 
+        $.data(this, 'jqTwisty', new Twisty(this, opts)); 
       } 
     });
   }; 
