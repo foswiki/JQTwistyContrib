@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1550844266" format="1.1" reprev="2" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1705329468" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -29,6 +29,8 @@ Here comes the container.
 | closeText | text to be displayed when the container is shown | same as openText |
 | openImg | url of an image displayed when the container is hidden |  |
 | closeImg | url of an image displayed when the container is shown | |
+| openIcon | font awesome icon name when the container is hidden, e.g. =fa-caret-down= |
+| closeIcon | font awesome icon name when the container is shown, e.g. =fa-caret-right= |
 | initialState| initial state of the container: can be 'open' or 'close' | close |
 | remember | remember the state of the twisty using localStore | false |
 | target | jquer selector of container(s) to toggle their visibility | next html node following the twisty trigger |
@@ -55,7 +57,7 @@ You might also fire an event on the twisty itself to change the state from withi
 ---++ Examples
 %JQREQUIRE{"jqtwisty"}%
 
----+++ Add a twisty to a &lt;verbatim> section
+---+++ Add a twisty to a verbatim section
 
 %BUTTON{"Show Code" class="jqTwisty"}%
 <verbatim class="cplusplus">
@@ -70,7 +72,7 @@ int main()
 </verbatim>
 
 ---+++ Simple 
-<a class='jqTwisty' data-open-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle-collapse.png' data-close-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle.png' data-close-text="%MAKETEXT{"close"}%">%MAKETEXT{"open"}%</a>
+<a class='jqTwisty' data-open-icon='fa-caret-down' data-close-icon='fa-caret-right' data-close-text="%MAKETEXT{"close"}%">%MAKETEXT{"open"}%</a>
 <div>
 Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
 
@@ -85,7 +87,7 @@ Iusto suscipiantur at pri. Qui aliquid delenit ad, ex eos porro cotidieque. Wisi
 
 ---+++ Multiple containers
 
-<a class='jqTwisty' data-open-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle-collapse.png' data-close-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle.png' data-close-text="%MAKETEXT{"close"}%" data-target='.myTwisty'>%MAKETEXT{"open"}%</a>
+<a class='jqTwisty' data-open-icon='fa-caret-down' data-close-icon='fa-caret-right' data-close-text="%MAKETEXT{"close"}%" data-target='.myTwisty'>%MAKETEXT{"open"}%</a>
 
 <div class="myTwisty" style="width:200px;border:1px solid red;padding:1em;">
 Omnis copiosae vix ad, per oratio suscipiantur ad. Est ne congue verear comprehensam. Nec mucius dicunt dignissim te, cu qui laoreet fastidii, iriure propriae appellantur cum eu. Ea vis dicat novum, feugiat tractatos interesset in ius, vel wisi offendit te. Possit feugiat similique per at, viris verear an quo.
@@ -98,7 +100,7 @@ Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus plat
 %CLEAR%
 
 ---+++ State changes
-<a id='twistyDemo1' class='jqTwisty' data-open-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle-collapse.png' data-close-img='%PUBURLPATH%/%SYSTEMWEB%/JQTwistyContrib/toggle.png' data-close-text="%MAKETEXT{"close"}%">%MAKETEXT{"open"}%</a>
+<a id='twistyDemo1' class='jqTwisty' data-open-icon='fa-caret-down' data-close-img='fa-caret-right' data-close-text="%MAKETEXT{"close"}%">%MAKETEXT{"open"}%</a>
 <div>
 Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus platonem in, inermis corpora at has. Ea mucius viderer eligendi vim, quis iuvaret ceteros mea at. Ea vim ullum consequuntur, propriae concludaturque vis ex, cu melius phaedrum vix. Debet possit definitiones eos ea. In mel tibique incorrupte.
 
@@ -149,10 +151,10 @@ Lorem ipsum dolor sit amet, ius ne dico constituto neglegentur. Vix ornatus plat
 .accordeon h3 {
   margin:0;
   padding:0.5em;
-  border-bottom:1px solid #ddd;
+  border-bottom:1px solid var(--color-border, #ddd);
 }
 .accordeon .jqTwistyHover {
-  color:#C60206;
+  color: var(--color-hover-foreground, #C60206);
 }
 .accordeon .jqTwistyContainer {
   padding:0.5em;
@@ -175,6 +177,7 @@ jQuery(function($) {
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  22 Jan 2024: | added =openIcon= and =closeIcon= parameters |
 |  26 Oct 2020: | compatibility with jquery-3; added =remember= feature |
 |  16 Aug 2018: | maintenance and docu |
 |  17 Jul 2015: | added css classes to indicate twisty state |
@@ -188,7 +191,7 @@ jQuery(function($) {
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25TOPIC%25"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2012-2020 Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2012-2024 Michael Daum"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%25TOPIC%25"}%
 %META:FIELD{name="Support" title="Support" value="Foswiki:Support/%25TOPIC%25"}%

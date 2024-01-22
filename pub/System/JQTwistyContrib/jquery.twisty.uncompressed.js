@@ -1,10 +1,10 @@
 /**
  * @preserve
- * jquery.twisty 3.00
+ * jquery.twisty 3.01
  * http://foswiki.org/Extensions/JQTwistyContrib
  *
- * Copyright (c) 2012-2020 Michael Daum http://michaeldaumconsulting.com
- * Licensed under the GPL licenses, locat
+ * Copyright (c) 2012-2024 Michael Daum http://michaeldaumconsulting.com
+ * Licensed under the GPL licenses
  */
 "use strict";
 (function($) {
@@ -15,6 +15,8 @@
         closeText: null,
         openImg : null,
         closeImg : null,
+        openIcon : null,
+        closeIcon : null,
         remember: false,
         initialState: null,
         easing: 'swing',
@@ -33,6 +35,7 @@
     }
     self.opts.closeText = self.opts.closeText || self.opts.openText;
     self.opts.closeImg = self.opts.closeImg || self.opts.openImg;
+    self.opts.closeIcon = self.opts.closeIcon || self.opts.openIcon;
 
     self.init();
   }
@@ -137,9 +140,15 @@
     if (self.opts.openImg) {
       html = '<img src="'+self.opts.openImg+'" /> ';
     }
+
+    if (self.opts.openIcon) {
+      html = '<i class="fa fa-fw '+ self.opts.openIcon +'" ></i> ';
+    }
+
     if (self.opts.closeText) {
       html += self.opts.closeText;
     }
+
     if (html) {
       self.element.html(html);
     }
@@ -156,12 +165,19 @@
     var self = this, html = '';
 
     self.state = 'close';
+
     if (self.opts.closeImg) {
       html = '<img src="'+self.opts.closeImg+'" /> ';
     }
+    
+    if (self.opts.closeIcon) {
+      html = '<i class="fa fa-fw '+ self.opts.closeIcon +'" ></i> ';
+    }
+
     if (self.opts.openText) {
       html += self.opts.openText;
     }
+    
     if (html) {
       self.element.html(html);
     }
