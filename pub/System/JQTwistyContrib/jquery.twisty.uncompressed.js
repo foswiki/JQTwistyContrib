@@ -1,9 +1,9 @@
 /**
  * @preserve
- * jquery.twisty 3.01
+ * jquery.twisty 4.01
  * http://foswiki.org/Extensions/JQTwistyContrib
  *
- * Copyright (c) 2012-2024 Michael Daum http://michaeldaumconsulting.com
+ * Copyright (c) 2012-2025 Michael Daum http://michaeldaumconsulting.com
  * Licensed under the GPL licenses
  */
 "use strict";

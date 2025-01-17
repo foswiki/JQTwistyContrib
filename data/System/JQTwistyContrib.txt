@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1705329468" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1737107615" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -177,6 +177,7 @@ jQuery(function($) {
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  17 Jan 2025: | display a pointer cursor hovering over a twisty link |
 |  22 Jan 2024: | added =openIcon= and =closeIcon= parameters |
 |  26 Oct 2020: | compatibility with jquery-3; added =remember= feature |
 |  16 Aug 2018: | maintenance and docu |
@@ -191,7 +192,7 @@ jQuery(function($) {
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25TOPIC%25"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2012-2024 Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2012-2025 Michael Daum"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%25TOPIC%25"}%
 %META:FIELD{name="Support" title="Support" value="Foswiki:Support/%25TOPIC%25"}%

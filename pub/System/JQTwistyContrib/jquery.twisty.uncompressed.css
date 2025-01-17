@@ -1,6 +1,9 @@
 a.jqTwisty {
   text-decoration:none;
 }
+a:hover.jqTwisty {
+  cursor:pointer;
+}
 .jqTwistyContainer {
   display:none;
 }
